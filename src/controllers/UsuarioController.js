@@ -1,23 +1,8 @@
-/*const express = require("express")
-const db = require("../config/db")
-
-const routerUsuarios = express.Router();
-routerUsuarios.get("/usuarios", async(req, res) => {
-    return 
-})
-
-const userById = express.Router();
-userById.get("/", async(req, res) => {
-    
-})
-
-module.exports = routerUsuarios*/
-
 const { CreateUserDTO } = require('../dto/UsuarioDTO.js');
 const userService = require('../services/UsuarioService.js')
 
 const userController = {
-    // Adicione o 'async' antes de (req, res)
+    // get para listar todos
     async getAll(req, res) { 
         try {
             const users = await userService.listAllUsuarios();
@@ -32,11 +17,18 @@ const userController = {
         }
     },
 
+    //post para criar
     async postUser(req, res){
-        console.log("aquu")
         try{
             const userData = CreateUserDTO(req.body) 
-            const userCreate = await userService.addUser(userData.nome, userData.email, userData.senha, userData.telefone, userData.role)
+            //método para adicionar um usuário (passando como parametro o DTO)
+            const userCreate = await userService.addUser(
+                userData.nome, 
+                userData.email, 
+                userData.senha, 
+                userData.telefone, 
+                userData.role
+            );
 
         }catch(error){
             console.log(error)
