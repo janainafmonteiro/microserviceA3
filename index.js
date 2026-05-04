@@ -7,9 +7,10 @@ const db = require("./src/config/db")
 app.use(express.json());
 
 
-db.authenticate().then(() => {
+db.getConnection().then(conn => {
   console.log("conectado")
-  app.listen(PORT, function(){
+  conn.release()
+  app.listen(PORT, () =>{
     console.log(`Servidor ativo em http://localhost:${PORT}`)
   })
 }).catch(err => {
