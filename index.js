@@ -5,7 +5,9 @@ const PORT = 3000;
 const db = require("./src/config/db")
 
 app.use(express.json());
-
+ 
+const userController = require('./src/controllers/UsuarioController')
+app.get("/usuarios", userController.getAll)
 
 db.getConnection().then(conn => {
   console.log("conectado")

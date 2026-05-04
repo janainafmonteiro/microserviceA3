@@ -1,7 +1,11 @@
-
 const db = require("../config/db")
+
+const express = require('express');
+const router = express.Router();
 const userController = require('../controllers/UsuarioController')
 
-app.use("/usuarios", userController)
+const userController = require('./src/controllers/UsuarioController')
+router.get("/usuarios", userController.getAll)
 
 
+router.post("/usuarios", userController.postUser)
