@@ -6,6 +6,7 @@ const db = require("./src/config/db")
 
 app.use(express.json());
 
+
 db.authenticate().then(() => {
   console.log("conectado")
   app.listen(PORT, function(){
