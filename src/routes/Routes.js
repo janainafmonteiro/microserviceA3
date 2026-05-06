@@ -13,4 +13,5 @@ app.get('/', (req, res) => {
 router.get("/usuarios", userController.getAll)
 router.post("/usuarios", userController.postUser)
 
+router.get("/eventos", eventoController.getEvento)
 router.post("/eventos", eventoController.postEvento)
