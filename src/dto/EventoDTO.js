@@ -1,4 +1,4 @@
-const CreateEventoTO = (body) => {
+const CreateEventoDTO = (body) => {
   return{
     responsavelid: body.responsavel,
     endereco: body.endereco,
