@@ -1,4 +1,5 @@
-const { CreateEventoDTO } = require("../dto/EventoDTO")
+const { CreateEventoDTO } = require("../dto/EventoDTO");
+const eventoService = require("../services/EventoService");
 
 const eventoController = {
   async getEvento(req, res){

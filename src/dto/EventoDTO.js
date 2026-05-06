@@ -1,6 +1,6 @@
 const CreateEventoDTO = (body) => {
   return{
-    responsavelid: body.responsavel,
+    responsavelid: body.responsavelid,
     endereco: body.endereco,
     dataini: body.dataini,
     datafim: body.datafim,
