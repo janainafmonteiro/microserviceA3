@@ -1,5 +1,5 @@
 create database Eventos;
-use Eventos;
+use eventos;
 
 create table usuarios(
 id_usuario int primary key auto_increment,
