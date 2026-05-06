@@ -1,6 +1,19 @@
 const { CreateEventoDTO } = require("../dto/EventoDTO")
 
 const eventoController = {
+  async getEvento(req, res){
+    try {
+      const eventos = await eventoService.listAllEventos();
+      
+      if (!eventos || eventos.length === 0) {
+        return res.status(404).json({ message: "Nenhum evento encontrado." });
+      }
+
+      return res.status(200).json(users);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  },
   async postEvento(req, res){
     try{
       const eventoData = CreateEventoDTO(req.body)
