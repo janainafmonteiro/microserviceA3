@@ -1,6 +1,6 @@
-const db = require('../config/db.js');
+import db from '../config/db.js'
 
-const eventoService = {
+export const eventoService = {
 
   async listAllEventos(){
     try{
@@ -23,5 +23,3 @@ const eventoService = {
     }
   }
 }
-
-module.exports = eventoService

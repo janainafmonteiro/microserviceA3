@@ -1,4 +1,5 @@
-const CreateEventoDTO = (body) => {
+
+export const CreateEventoDTO = (body) => {
   return{
     responsavelid: body.responsavelid,
     endereco: body.endereco,
@@ -11,5 +12,3 @@ const CreateEventoDTO = (body) => {
     status: body.status
   }
 }
-
-module.exports = { CreateEventoDTO }

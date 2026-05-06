@@ -1,10 +1,10 @@
-const db = require("../config/db")
+import express from 'express'
+import db from '../config/db.js'
 
-const express = require('express');
+import { userController } from '../controllers/UsuarioController.js'
+import { eventoController } from '../controllers/EventoController.js'
+
 const router = express.Router();
-
-const userController = require('../controllers/UsuarioController')
-const eventoController = require('../controllers/EventoController')
 
 router.get('/', (req, res) => {
     res.send('Servidor rodando com sucesso!')
@@ -12,8 +12,9 @@ router.get('/', (req, res) => {
 
 router.get("/usuarios", userController.getAll)
 router.post("/usuarios", userController.postUser)
+router.post('/user', userController.postFindByEmailAndPassword)
 
 router.get("/eventos", eventoController.getEvento)
 router.post("/eventos", eventoController.postEvento)
 
-module.exports = router
+export default router

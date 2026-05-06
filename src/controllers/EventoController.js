@@ -1,7 +1,7 @@
-const { CreateEventoDTO } = require("../dto/EventoDTO");
-const eventoService = require("../services/EventoService");
+import { CreateEventoDTO } from "../dto/EventoDTO.js";
+import { eventoService } from "../services/EventoService.js";
 
-const eventoController = {
+export const eventoController = {
   async getEvento(req, res){
     try {
       const eventos = await eventoService.listAllEventos();
@@ -28,11 +28,11 @@ const eventoController = {
         eventoData.capacidade,
         eventoData.dispo,
         eventoData.status
-
       )
+      return res.status(200).json({ message: "Evento criado com sucesso"})
     }catch(err){
       throw new Error('erro no evento controler')
+      return res.status(500).json({ error: error.message });
     }
   }
 }
-module.exports = eventoController

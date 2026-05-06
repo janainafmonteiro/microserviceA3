@@ -1,11 +1,12 @@
-const express = require('express')
+import express from 'express'
+
+import db from './src/config/db.js'
+import routes from './src/routes/Routes.js'
 
 const app = express()
 const PORT = 3000
-const db = require("./src/config/db")
-const routes = require("./src/routes/Routes")
 
-app.use(express.json());
+app.use(express.json())
 app.use(routes)
 
 db.getConnection().then(conn => {

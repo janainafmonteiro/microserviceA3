@@ -1,5 +1,5 @@
 // DTO para receber dados do cliente (Request)
-const CreateUserDTO = (body) => {
+export const CreateUserDTO = (body) => {
     return {
         nome: body.nome,
         email: body.email,
@@ -9,4 +9,9 @@ const CreateUserDTO = (body) => {
     };
 };
 
-module.exports = { CreateUserDTO };
+export const FindUserDTO = (body) =>{
+    return{
+        email: body.email,
+        senha: body.senha
+    }
+}
