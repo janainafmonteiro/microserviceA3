@@ -11,14 +11,14 @@ const userService = {
             throw new Error('Erro ao buscar usuários no banco de dados.');
         }
     },
-    //métod para adicionar um usuário
+    //método para adicionar um usuário
     async addUser(nome, email, senha, telefone, role){
         try{
             const query = 'INSERT INTO usuarios (nome, email, senha, telefone, role) VALUES (?, ?, ?, ?, ?)';
             const [result] = await db.query(query, [nome, email, senha, telefone, role]);
 
             //retornar um objeto
-            return{id: result.insertId, nome, email, senha, telefone, role}
+            return{id: result.insertId, nome, email, telefone, role}
         }catch(error){
             console.error('Erro no Service:', error);
             throw new Error('Erro ao criar usuários no banco de dados.');

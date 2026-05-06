@@ -1,10 +1,12 @@
-const express = require('express');
+const express = require('express')
 
-const app = express();
-const PORT = 3000;
+const app = express()
+const PORT = 3000
 const db = require("./src/config/db")
+const routes = require("./src/routes/Routes")
 
 app.use(express.json());
+app.use(routes)
 
 db.getConnection().then(conn => {
   console.log("conectado")
@@ -15,16 +17,3 @@ db.getConnection().then(conn => {
 }).catch(err => {
   console.log("err", err)
 })
-
-//endpoints userController
-const userController = require('./src/controllers/UsuarioController')
-app.get("/usuarios", userController.getAll)
-app.post("/usuarios", userController.postUser)
-
-app.get('/', (req, res) => {
-    res.send('Servidor rodando com sucesso!');
-});
-
-app.listen(PORT, () => {
-    console.log(`Servidor ativo em http://localhost:${PORT}`);
-});

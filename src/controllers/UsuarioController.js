@@ -2,6 +2,7 @@ const { CreateUserDTO } = require('../dto/UsuarioDTO.js');
 const userService = require('../services/UsuarioService.js')
 
 const userController = {
+    
     // get para listar todos
     async getAll(req, res) { 
         try {
