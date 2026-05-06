@@ -21,3 +21,4 @@ const eventoController = {
     }
   }
 }
+module.exports = eventoController
