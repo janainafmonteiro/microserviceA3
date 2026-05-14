@@ -10,9 +10,9 @@ export const eventoController = {
         return res.status(404).json({ message: "Nenhum evento encontrado." });
       }
 
-      return res.status(200).json(users);
+      return res.status(200).json(eventos);
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: error.message, func: "getEvento()" });
     }
   },
   async postEvento(req, res){
@@ -32,7 +32,7 @@ export const eventoController = {
       return res.status(200).json({ message: "Evento criado com sucesso"})
     }catch(err){
       throw new Error('erro no evento controler')
-      return res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: error.message, func: "postEvento()"});
     }
   }
 }

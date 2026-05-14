@@ -3,6 +3,7 @@ import db from '../config/db.js'
 
 import { userController } from '../controllers/UsuarioController.js'
 import { eventoController } from '../controllers/EventoController.js'
+import { authMiddleware } from '../config/auth.js';
 
 const router = express.Router();
 
@@ -15,6 +16,8 @@ router.post("/usuarios", userController.postUser)
 router.post('/user', userController.postFindByEmailAndPassword)
 
 router.get("/eventos", eventoController.getEvento)
-router.post("/eventos", eventoController.postEvento)
+//endpoint com middleware
+router.post("/eventos", authMiddleware, eventoController.postEvento)
+
 
 export default router

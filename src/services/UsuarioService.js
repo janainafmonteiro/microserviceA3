@@ -4,7 +4,7 @@ export const userService = {
     //método para retornar lista de usuários
     async listAllUsuarios() {
         try{
-            const [rows] = await db.query('SELECT id_usuario, nome, email, telefone FROM usuarios');
+            const [rows] = await db.query('SELECT id_usuario, nome, email, senha, telefone FROM usuarios');
             return rows;
         }catch (error){
             console.error('Erro no Service:', error);
