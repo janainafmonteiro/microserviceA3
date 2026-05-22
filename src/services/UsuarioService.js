@@ -4,7 +4,7 @@ export const userService = {
     //método para retornar lista de usuários
     async listAllUsuarios() {
         try{
-            const [rows] = await db.query('SELECT id_usuario, nome, email, senha, telefone FROM usuarios');
+            const [rows] = await db.query('SELECT id_usuario, nome, email, senha, telefone, role FROM usuarios');
             return rows;
         }catch (error){
             console.error('Erro no Service:', error);
@@ -27,7 +27,7 @@ export const userService = {
     //procurar usuário pelo email && senha
     async findUser(email, senha){
         try{
-            const [rows] = await db.query('SELECT id_usuario, nome, email FROM usuarios WHERE email = ? AND senha = ?', [email, senha]);
+            const [rows] = await db.query('SELECT id_usuario, nome, email, role FROM usuarios WHERE email = ? AND senha = ?', [email, senha]);
             
             //tamanho da lista maior que 0 retorna algo
             if(rows.length > 0){

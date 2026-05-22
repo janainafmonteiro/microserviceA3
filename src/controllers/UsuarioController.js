@@ -5,7 +5,6 @@ import { FindUserDTO } from '../dto/UsuarioDTO.js'
 import { userService } from '../services/UsuarioService.js'
 
 export const userController = {
-    
     // get para listar todos
     async getAll(req, res) { 
         try {
@@ -20,8 +19,7 @@ export const userController = {
             return res.status(500).json({ error: error.message });
         }
     },
-
-    //post para criar
+    //post para criar usuário
     async postUser(req, res){
         try{
             const userData = CreateUserDTO(req.body)
@@ -48,7 +46,6 @@ export const userController = {
     async postFindByEmailAndPassword(req, res){
         try{
             const userData = FindUserDTO(req.body)
-
             //verificação credenciais
             if(userData.email != "" && userData.senha != ""){
                 const userFind = await userService.findUser(userData.email,userData.senha)
@@ -60,11 +57,10 @@ export const userController = {
                         email: userFind.email,
                         role: userFind.role
                     }
-
                     //token passando como parâmentro o payload e a chave jwt (.env)
                     //token expira em 1 hora
                     const token = jwt.sign(payload, process.env.JWT_KEY, {
-                        expiresIn: '1h'
+                        expiresIn: '30m'
                     })
 
                     return res.status(200).json({ 
@@ -72,10 +68,8 @@ export const userController = {
                         token: token,
                         usuario: userFind
                     })
-                    
                 }else res.status(401).json({ error: "Email ou senha incorretos" })
             }else return res.status(400).json({ error: "Email e senha obrigatórios" })
-
         }catch(error){
             return res.status(500).json({ error: error.message, func: "postFindByEmailAndPassword()"})
         }

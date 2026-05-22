@@ -1,7 +1,7 @@
 
-export const CreateEventoDTO = (body) => {
+export const CreateEventoDTO = (body, responsavelid) => {
   return{
-    responsavelid: body.responsavelid,
+    responsavelid: responsavelid,
     endereco: body.endereco,
     dataini: body.dataini,
     datafim: body.datafim,
