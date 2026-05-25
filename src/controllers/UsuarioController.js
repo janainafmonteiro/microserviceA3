@@ -13,10 +13,20 @@ export const userController = {
             if (!users || users.length === 0) {
                 return res.status(404).json({ message: "Nenhum usuário encontrado." });
             }
-
+  
             return res.status(200).json(users);
         } catch (error) {
             return res.status(500).json({ error: error.message });
+        }
+    },
+    //get buscar por id
+    async getUserById(req, res){
+        try{
+            const userResponse = req.params
+            const user = await userService.findUserById(userResponse.id)
+            return res.status(200).json({ user })
+        }catch(error){
+            return res.status(500).json({ error: error.message })
         }
     },
     //post para criar usuário

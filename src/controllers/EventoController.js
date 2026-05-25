@@ -17,7 +17,7 @@ export const eventoController = {
   },
   async postEvento(req, res){
     try{
-      //criando o EventoDTO e passando o token jwt userId como parâmetro
+      //criando o EventoDTO e passando o token jwt userId
       const eventoData = CreateEventoDTO(req.body, req.userId)
 
       const eventoCreate = await eventoService.addEvento(

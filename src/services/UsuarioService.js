@@ -36,6 +36,19 @@ export const userService = {
         }catch(error){
             throw new Error('Erro ao buscar usuario no banco de dados.');
         }
+    },
+    //procurar usuário pelo id
+    async findUserById(id){
+        try{
+            const [rows] = await db.query('SELECT nome, email, role FROM usuarios WHERE id_usuario = ?', [id]);
+            
+            //tamanho da lista maior que 0 retorna algo
+            if(rows.length > 0){
+                return rows[0];
+            }else console.log("Usuário não encontrado")
+        }catch(error){
+            throw new Error('Erro ao buscar usuario pelo id no banco de dados.')
+        }
     }
 }
 

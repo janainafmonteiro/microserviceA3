@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
 })
 
 router.get("/usuarios", userController.getAll)
+router.get("/userById/:id", userController.getUserById)
 router.post("/usuarios", userController.postUser)
-router.post('/user', userController.postFindByEmailAndPassword)
+router.post("/user", userController.postFindByEmailAndPassword)
 
 router.get("/eventos", eventoController.getEvento)
 //endpoint com middleware
 router.post("/eventos", authMiddleware, isOrganizador, eventoController.postEvento)
-
 
 export default router
